@@ -1,2 +1,5 @@
 FROM mhart/alpine-node:6.9.1
-RUN npm install yarn --global
+RUN apk add --no-cache wget ca-certificates \
+    && mkdir /opt \
+    && wget -qO- https://yarnpkg.com/latest.tar.gz | tar xz -C /opt \
+    && apk del wget ca-certificates
